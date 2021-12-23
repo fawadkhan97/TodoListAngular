@@ -1,0 +1,16 @@
+.delete-icon {
+    color: rgb(245, 0, 0);
+}
+
+.edit-icon {
+    color: rgb(202, 206, 7);
+}
+
+.icon-button-properties {
+    cursor: pointer;
+}
+
+.icon-button-properties:focus,
+.icon-button-properties:active {
+    font-size: 90%;
+}

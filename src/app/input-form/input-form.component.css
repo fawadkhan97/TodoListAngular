@@ -1,0 +1,9 @@
+.validation-message {
+    margin-top: 0px;
+    color: rgb(255, 0, 0);
+}
+
+.ng-touched .ng-invalid {
+    border-color: red;
+    transition: 1s;
+}

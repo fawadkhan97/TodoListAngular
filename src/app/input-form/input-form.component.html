@@ -1,0 +1,14 @@
+<form>
+    <label for="todoInput">Add new item</label>
+    <br>
+    <input required ngModel id="todoInput" #firstName="ngModel" (change)="log(firstName)" type="text" name="todoInput" placeholder="enter here">
+    <select name="category" id="categories">
+    <option value="office">office</option>
+    <option value="personal">personal</option>
+    <option value="other">other</option>
+
+  </select>
+    <app-buttons (btnClick)="addTask()" text="Add new Task"></app-buttons>
+    <p class="validation-message" *ngIf="!firstName.valid && firstName.touched">add a valid task</p>
+
+</form>

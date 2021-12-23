@@ -1,0 +1,8 @@
+<ng-container *ngIf="tasks">
+    <app-task-list *ngFor="let task of tasks" [task]="task" (onDeleteTask)="deleteTask(task)" (onEditTask)="editTask(task)">
+    </app-task-list>
+</ng-container>
+
+<ng-container *ngIf="tasks.length == 0 || !tasks">
+    <app-task-list> </app-task-list>
+</ng-container>

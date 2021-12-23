@@ -1,0 +1,11 @@
+<div *ngIf="task">
+    <input type="checkbox" />
+
+    <li style="display: inline-block; list-style-type: none">
+        {{ task.text }}
+    </li>
+    <fa-icon [icon]="editIcon" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties'"></fa-icon>
+    <fa-icon [icon]="deleteIcon" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'"></fa-icon>
+</div>
+
+<p *ngIf="!task">No task found. please add some new task</p>
