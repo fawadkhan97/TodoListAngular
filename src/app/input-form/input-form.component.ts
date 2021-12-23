@@ -9,25 +9,39 @@ import { Task } from '../task';
 export class InputFormComponent implements OnInit {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
 
+  text: string = '';
+  category!: 'office' | 'other' | 'personal';
+  priority!: 'low' | 'high' | 'medium';
+  dateAdded!: Date;
+  buttonType: string = 'submit';
+
   constructor(private taskservice: TaskService) {}
 
   ngOnInit(): void {}
-  addTask() {
-    let task: Task = {
-      id: 9,
-      text: '',
+
+  onSubmit() {
+    if (
+      this.text.trim().length === 0 ||
+      !this.category ||
+      !this.priority ||
+      !this.dateAdded
+    ) {
+      alert('Please enter correct values');
+      return;
+    }
+
+    const task: Task = {
+      text: this.text,
+      category: this.category,
+      priority: this.priority,
+      dateAdded: this.dateAdded,
       isCompleted: false,
-      category: 'other',
-      dateAdded: new Date(),
-      Priority: 'low',
     };
-    let text = prompt('add a new task');
 
-    text ? (task.text = text) : '';
-    this.taskservice.addTask(task).subscribe();
     console.log(task);
+    this.text = '';
+    this.dateAdded;
   }
-
   log(x: any) {
     console.log(x);
   }

@@ -1,14 +1,26 @@
-<form>
+<form #inputForm="ngForm" (ngSubmit)="onSubmit()">
     <label for="todoInput">Add new item</label>
-    <br>
-    <input required ngModel id="todoInput" #firstName="ngModel" (change)="log(firstName)" type="text" name="todoInput" placeholder="enter here">
-    <select name="category" id="categories">
+    <br />
+    <input required ngModel id="todoInput" #firstName="ngModel" (change)="log(firstName)" type="text" name="todoInput" placeholder="enter here" [(ngModel)]="text" />
+    <br />
+    <label for="categories">Category</label>
+    <select name="category" id="categories" [(ngModel)]="category">
     <option value="office">office</option>
     <option value="personal">personal</option>
     <option value="other">other</option>
-
   </select>
-    <app-buttons (btnClick)="addTask()" text="Add new Task"></app-buttons>
-    <p class="validation-message" *ngIf="!firstName.valid && firstName.touched">add a valid task</p>
-
+    <br />
+    <label for="priorities">Priority</label>
+    <select name="Priority" id="priorities" [(ngModel)]="priority">
+    <option value="low">low</option>
+    <option value="medium">medium</option>
+    <option value="high">high</option>
+  </select>
+    <br />
+    <label for="date">Select date:</label>
+    <input type="date" name="date" id="date" [(ngModel)]="dateAdded" />
+    <app-buttons text="Add new Task" [type]="buttonType"></app-buttons>
+    <p class="validation-message" *ngIf="!firstName.valid && firstName.touched">
+        add a valid task
+    </p>
 </form>

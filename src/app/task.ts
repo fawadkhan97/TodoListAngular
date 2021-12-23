@@ -7,5 +7,5 @@ export interface Task {
   category: 'office' | 'personal' | 'other';
   dateAdded?: Date;
   dateCompleted?: Date;
-  Priority: 'high' | 'medium' | 'low';
+  priority: 'high' | 'medium' | 'low';
 }
