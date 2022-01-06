@@ -29,15 +29,23 @@ export class TasksComponent implements OnInit {
         .getTask()
         .pipe(
           map((tasks: Task[]) =>
+            // filter tasks array to prevent
+            // duplicates by comparing id,
+            //task with id or text null or if task text is empty
+
             tasks.filter(
-              (currentTask: Task) =>
-                currentTask.text?.trim().length != 0 &&
-                currentTask.text != undefined
+              (task, index, arr) =>
+                arr.findIndex((arrtask) => arrtask.id === task.id) === index &&
+                task.id !== undefined &&
+                task.text?.trim().length !== 0 &&
+                task.text !== undefined
             )
           )
         )
         .subscribe(
-          (data: Task[]) => ((this.tasks = data), (this.filteredTasks = data))
+          (data: Task[]) => (
+            (this.tasks = data), (this.filteredTasks = data), console.log(data)
+          )
         )
     );
     this.subscriptions.add(
@@ -46,6 +54,12 @@ export class TasksComponent implements OnInit {
         .subscribe((value) => (this.showAddtaskForm = value))
     );
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('hellow');
+    console.log(changes['Products'].currentValue);
+  }
+
 
   toggleInputForm() {
     this.uiService.toggleAddtask();
@@ -63,7 +77,7 @@ export class TasksComponent implements OnInit {
     );
   }
   editTask(task: Task): void {
-    console.log(task);
+    console.log(this.tasks);
     this.subscriptions.add(this.taskService.editTask(task).subscribe());
     console.log(
       'requested to edit task of task with task id: ',
@@ -78,7 +92,9 @@ export class TasksComponent implements OnInit {
       this.taskService
         .deleteTask(task)
         .subscribe(
-          () => (this.tasks = this.tasks.filter((t) => t.id !== task.id))
+          () =>
+            (this.filteredTasks=
+              this.filteredTasks.filter((t) => t.id !== task.id))
         )
     );
     console.log(
@@ -90,6 +106,18 @@ export class TasksComponent implements OnInit {
     );
 
     return;
+  }
+
+  filterTask(filterCategory: String): void {
+    if (filterCategory === 'all') {
+      this.filteredTasks = this.tasks;
+      console.log(this.filteredTasks);
+    } else {
+      this.filteredTasks = this.tasks.filter(
+        (task) => task.category === filterCategory
+      );
+      console.log(this.filteredTasks);
+    }
   }
 
   toggleCompleteTask(task: Task): void {}

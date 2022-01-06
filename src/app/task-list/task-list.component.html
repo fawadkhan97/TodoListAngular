@@ -10,8 +10,8 @@
       <span> {{ task.text }}</span>
     </li>
     <span class="ml-2 align-self-rght ml-auto">
-      <fa-icon [icon]="editIcon" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties mr-1'"></fa-icon>
-      <fa-icon [icon]="deleteIcon" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'">
+      <fa-icon [icon]="editIcon" title="Edit" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties mr-1'"></fa-icon>
+      <fa-icon [icon]="deleteIcon" title="Delete" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'">
       </fa-icon>
     </span>
   </div>

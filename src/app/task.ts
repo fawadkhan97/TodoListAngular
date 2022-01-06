@@ -1,4 +1,3 @@
-category: 'office|home';
 
 export interface Task {
   id?: number;

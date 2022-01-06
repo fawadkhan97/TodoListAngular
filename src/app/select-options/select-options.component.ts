@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../task';
 
 @Component({
@@ -9,10 +9,13 @@ import { Task } from '../task';
 export class SelectOptionsComponent implements OnInit {
   constructor() {}
 
- @Input() tasks: Task[] = [];
+  @Input() tasks: Task[] = [];
+  @Output() filterCategory = new EventEmitter<String>();
+
   ngOnInit(): void {}
 
-  selectedOption(event: any) {
-    console.log(event.value);
+  selectedOption(event: Event) {
+    console.log((event.target as HTMLSelectElement).value);
+    this.filterCategory.emit((event.target as HTMLSelectElement).value);
   }
 }

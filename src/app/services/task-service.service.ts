@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from '../task';
 import { Observable } from 'rxjs';
 const httpOptions = {
@@ -29,8 +26,6 @@ export class TaskService {
   }
 
   deleteTask(task: Task): Observable<Task> {
-    console.log('deleteTask is called');
-    console.log(`${this.apiUrl}/${task.id}`);
     return this.http.delete<Task>(`${this.apiUrl}/${task.id}`);
   }
 }

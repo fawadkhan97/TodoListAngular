@@ -13,6 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 import { SelectOptionsComponent } from './select-options/select-options.component';
+import { FilterArrayPipe } from './pipes/filter-array.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SelectOptionsComponent } from './select-options/select-options.componen
     InputFormComponent,
     TasksComponent,
     SelectOptionsComponent,
+    FilterArrayPipe,
   ],
   imports: [
     BrowserModule,
