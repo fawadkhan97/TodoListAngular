@@ -1,0 +1,10 @@
+<select
+  class="form-select form-select-lg"
+  (change)="selectedOption($event.target)"
+  aria-label=".form-select-lg example"
+>
+  <option selected value="all">Filter by Category</option>
+  <option *ngFor="let task of tasks" [ngValue]="task.category">
+    {{ task.category }}
+  </option>
+</select>

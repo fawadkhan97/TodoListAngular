@@ -1,16 +1,22 @@
 .delete-icon {
-    color: rgb(245, 0, 0);
+  color: rgb(245, 0, 0);
 }
 
 .edit-icon {
-    color: rgb(202, 206, 7);
+  color: rgb(202, 206, 7);
 }
 
 .icon-button-properties {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .icon-button-properties:focus,
 .icon-button-properties:active {
-    font-size: 90%;
+  font-size: 90%;
 }
+
+input[type="checkbox"]:checked + li {
+  text-decoration: line-through;
+}
+
+

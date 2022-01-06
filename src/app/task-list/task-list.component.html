@@ -1,11 +1,19 @@
-<div *ngIf="task">
-    <input type="checkbox" />
-
-    <li style="display: inline-block; list-style-type: none">
-        {{ task.text }}
+<div *ngIf="task" class="card">
+  <div class="card-body d-flex">
+    <span>
+      <input type="checkbox" (click)="toggleIsTaskCompleted(task)" [checked]="task.isCompleted" />
+    </span>
+    <li [ngStyle]="{
+        'list-style-type': 'none',
+        'text-decoration': task.isCompleted ? 'line-through' : 'none'
+      }" class="ml-2 align-self-center">
+      <span> {{ task.text }}</span>
     </li>
-    <fa-icon [icon]="editIcon" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties'"></fa-icon>
-    <fa-icon [icon]="deleteIcon" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'"></fa-icon>
+    <span class="ml-2 align-self-rght ml-auto">
+      <fa-icon [icon]="editIcon" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties mr-1'"></fa-icon>
+      <fa-icon [icon]="deleteIcon" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'">
+      </fa-icon>
+    </span>
+  </div>
 </div>
-
 <p *ngIf="!task">No task found. please add some new task</p>

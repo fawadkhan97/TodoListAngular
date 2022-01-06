@@ -13,6 +13,7 @@ export class TaskListComponent implements OnInit {
   @Input() task!: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
   @Output() onEditTask: EventEmitter<Task> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -25,9 +26,15 @@ export class TaskListComponent implements OnInit {
     if (typeof text === 'string') {
       text.trim().length != 0
         ? (task.text = text)
-        : alert('Please enter correct value');
+        : alert('Please enter correct value , task cannot be empty');
     }
     console.log(task);
     this.onEditTask.emit(task);
   }
+
+  toggleIsTaskCompleted(task: Task): void {
+    task.isCompleted=!task.isCompleted;
+    this.onEditTask.emit(task);
+  }
+  
 }

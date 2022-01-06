@@ -1,12 +1,16 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { TaskService } from '../services/task-service.service';
+import { UiService } from '../services/ui.service';
+import { Subscription } from 'rxjs';
 import { Task } from '../task';
+
 @Component({
   selector: 'app-input-form',
   templateUrl: './input-form.component.html',
   styleUrls: ['./input-form.component.css'],
 })
 export class InputFormComponent implements OnInit {
+  showAddtaskForm!: boolean;
+  subscriptions!: Subscription;
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
 
   text: string = '';
@@ -15,9 +19,15 @@ export class InputFormComponent implements OnInit {
   dateAdded!: Date;
   buttonType: string = 'submit';
 
-  constructor(private taskservice: TaskService) {}
+  constructor(private uiService: UiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscriptions = this.uiService
+      .onToggle()
+      .subscribe((value) => this.showAddtaskForm=value);
+    
+    
+  }
 
   onSubmit() {
     if (
@@ -38,11 +48,6 @@ export class InputFormComponent implements OnInit {
       isCompleted: false,
     };
 
-    console.log(task);
-    this.text = '';
-    this.dateAdded;
-  }
-  log(x: any) {
-    console.log(x);
+    this.onAddTask.emit(task);
   }
 }

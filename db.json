@@ -1,41 +1,35 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "",
-      "isCompleted": false,
+      "text": "qwerty",
       "category": "office",
-      "dateAdded": "2021-12-21",
-      "Priority": "high"
-    },
-    {
-      "id": 2,
-      "text": "",
+      "priority": "low",
+      "dateAdded": "2022-01-0",
       "isCompleted": true,
+      "id": 3
+    },
+    {
+      "text": "fawad",
       "category": "office",
-      "dateAdded": "2021-12-21",
-      "Priority": "medium"
+      "priority": "medium",
+      "dateAdded": "2022-01-05",
+      "isCompleted": true,
+      "id": 4
     },
     {
-      "id": 3,
-      "text": "add new items",
+      "text": "fawad",
+      "category": "office",
+      "priority": "medium",
+      "dateAdded": "2022-01-05",
       "isCompleted": false,
-      "category": "other",
-      "dateAdded": "2021-12-21",
-      "Priority": "low"
-    },
-    {
-      "id": 4,
-      "text": "assad",
-      "isCompleted": false,
-      "category": "other",
-      "dateAdded": "2021-12-21",
-      "Priority": "low"
-    },
-    {
       "id": 5
     },
     {
+      "text": "asdsad",
+      "category": "personal",
+      "priority": "medium",
+      "dateAdded": "2022-01-05",
+      "isCompleted": false,
       "id": 6
     }
   ]
