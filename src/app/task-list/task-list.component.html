@@ -1,19 +1,57 @@
 <div *ngIf="task" class="card">
   <div class="card-body d-flex">
     <span>
-      <input type="checkbox" (click)="toggleIsTaskCompleted(task)" [checked]="task.isCompleted" />
+      <input
+        type="checkbox"
+        (click)="toggleIsTaskCompleted(task)"
+        [checked]="task.isCompleted"
+      />
     </span>
-    <li [ngStyle]="{
-        'list-style-type': 'none',
-        'text-decoration': task.isCompleted ? 'line-through' : 'none'
-      }" class="ml-2 align-self-center">
-      <span> {{ task.text }}</span>
-    </li>
-    <span class="ml-2 align-self-rght ml-auto">
-      <fa-icon [icon]="editIcon" title="Edit" (click)="onEdit(task)" [ngClass]="'edit-icon icon-button-properties mr-1'"></fa-icon>
-      <fa-icon [icon]="deleteIcon" title="Delete" (click)="onDelete(task)" [ngClass]="'delete-icon icon-button-properties'">
-      </fa-icon>
-    </span>
+    <ng-container *ngIf="!isEditingTask">
+      <li
+        [ngStyle]="{
+          'list-style-type': 'none',
+          'text-decoration': task.isCompleted ? 'line-through' : 'none'
+        }"
+        class="ml-2 align-self-center"
+      >
+        <span> {{ task.text }}</span>
+      </li>
+      <span class="ml-2 align-self-rght ml-auto">
+        <fa-icon
+          [icon]="editIcon"
+          title="Edit"
+          (click)="editTask()"
+          [ngClass]="'edit-icon icon-button-properties mr-1'"
+        ></fa-icon>
+        <fa-icon
+          [icon]="deleteIcon"
+          title="Delete"
+          (click)="onDelete(task)"
+          [ngClass]="'delete-icon icon-button-properties'"
+        >
+        </fa-icon>
+      </span>
+    </ng-container>
+
+    <ng-container *ngIf="isEditingTask">
+      <input type="text" class="form-control ml-2 border-primary " [(ngModel)]="task.text"  style="width: 60%;"/>
+      <span class="ml-2 align-self-rght ml-auto" >
+        <fa-icon
+          [icon]="checkIcon"
+          title="submit"
+          (click)="onEdit(task)"
+          [ngClass]="'check-icon icon-button-properties mr-1'"
+        ></fa-icon>
+        <fa-icon
+          [icon]="closeIcon"
+          title="close"
+          (click)="editTask()"
+          [ngClass]="'close-icon icon-button-properties'"
+        >
+        </fa-icon>
+      </span>
+    </ng-container>
   </div>
 </div>
 <p *ngIf="!task">No task found. please add some new task</p>

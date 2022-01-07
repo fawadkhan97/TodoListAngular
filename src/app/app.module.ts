@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorHandlingInterceptor } from './interceptors/error-handling.interceptor';
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { FilterArrayPipe } from './pipes/filter-array.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FilterArrayPipe } from './pipes/filter-array.pipe';
       useClass: ErrorHandlingInterceptor,
       multi: true,
     },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

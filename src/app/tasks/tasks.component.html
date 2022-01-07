@@ -1,27 +1,23 @@
-<div class="d-flex mb-1">
-  <app-buttons
-    [text]="showAddtaskForm ? 'close' : 'Add Todo'"
-    (btnClick)="toggleInputForm()"
-    [type]="buttonType"
-    [btnclass]="showAddtaskForm ? buttonDanger : buttonPrimary"
-  ></app-buttons>
+<div *ngIf="
+    showButtonComponent ||
+    showFilterComponent
+  " class="d-flex mb-1">
+  <app-buttons [text]="showAddtaskForm ? 'close' : 'Add Todo'" (btnClick)="toggleInputForm()"
+    [type]="buttonType" [btnclass]="
+      showAddtaskForm ? buttonDanger : buttonPrimary
+    "></app-buttons>
 
-  <app-select-options
-    style="margin-left: auto; align-self: flex-end"
-    [tasks]="tasks "
-   (filterCategory)="filterTask($event)"
-
-   
-  ></app-select-options>
+  <app-select-options style="margin-left: auto; align-self: flex-end" [tasks]="tasks"
+    (filterCategory)="filterTask($event)"></app-select-options>
 </div>
-<app-input-form (onAddTask)="addTask($event)"></app-input-form>
-<ng-container *ngIf="filteredTasks ">
-  <app-task-list
-    *ngFor="let task of filteredTasks  "
-    [task]="task"
-    (onDeleteTask)="deleteTask(task)"
-    (onEditTask)="editTask(task)"
-  >
+<app-input-form (onAddTask)="addTask($event)" (hideAddTaskForm)="toggleInputForm()"></app-input-form>
+<ng-container *ngIf="
+    filteredTasks &&
+    showButtonComponent &&
+    showFilterComponent
+  ">
+  <app-task-list *ngFor="let task of filteredTasks" [task]="task" (onDeleteTask)="deleteTask(task)"
+    (onEditTask)="editTask(task)">
   </app-task-list>
 </ng-container>
 

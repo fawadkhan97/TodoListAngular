@@ -6,5 +6,6 @@ export interface Task {
   category: 'office' | 'personal' | 'other';
   dateAdded?: Date;
   dateCompleted?: Date;
+  dateModified?: String|null;
   priority: 'high' | 'medium' | 'low';
 }

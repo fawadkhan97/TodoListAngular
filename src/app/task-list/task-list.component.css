@@ -6,6 +6,13 @@
   color: rgb(202, 206, 7);
 }
 
+.check-icon{
+  color: #00df33;
+}
+.close-icon{
+  color: red;
+}
+
 .icon-button-properties {
   cursor: pointer;
 }

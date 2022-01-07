@@ -11,6 +11,7 @@ export class ButtonsComponent implements OnInit {
   @Input() btnColor!: string;
   @Input() btnclass!: string;
   @Output() btnClick = new EventEmitter<MouseEvent>();
+
   constructor() {}
 
   ngOnInit(): void {}

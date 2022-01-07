@@ -22,7 +22,5 @@ export class HeaderComponent implements OnInit {
       .onToggle()
       .subscribe((value) => (this.showAddtaskForm = value));
   }
-  toggleInputForm() {
-    this.uiService.toggleAddtask();
-  }
+
 }

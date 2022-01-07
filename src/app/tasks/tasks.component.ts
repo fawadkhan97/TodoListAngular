@@ -1,9 +1,10 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { Task } from '../task';
+import { Task } from '../interface/task';
 import { TaskService } from '../services/task-service.service';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UiService } from '../services/ui.service';
+import { ShowUiElements } from '../interface/show-ui-elements';
 
 @Component({
   selector: 'app-tasks',
@@ -18,7 +19,10 @@ export class TasksComponent implements OnInit {
   buttonPrimary: string = 'btn btn-primary';
   buttonSuccess: string = 'btn btn-success';
   buttonDanger: string = 'btn btn-danger';
-  showAddtaskForm!: boolean;
+  showAddtaskForm!: Boolean;
+  showButtonComponent: Boolean=true;
+  showFilterComponent: Boolean=true;
+
   private subscriptions = new Subscription();
 
   constructor(private taskService: TaskService, private uiService: UiService) {}
@@ -51,7 +55,13 @@ export class TasksComponent implements OnInit {
     this.subscriptions.add(
       this.uiService
         .onToggle()
-        .subscribe((value) => (this.showAddtaskForm = value))
+        .subscribe(
+          (value: ShowUiElements) => (
+            (this.showAddtaskForm = value.showAddtaskForm),
+            ((this.showButtonComponent = value.showButtonComponent),
+            (this.showFilterComponent = value.showFilterComponent))
+          )
+        )
     );
   }
 
@@ -60,10 +70,10 @@ export class TasksComponent implements OnInit {
     console.log(changes['Products'].currentValue);
   }
 
-
   toggleInputForm() {
-    this.uiService.toggleAddtask();
+    this.uiService.toggleUiElements();
   }
+
   addTask(task: Task): void {
     console.log(task);
     this.subscriptions.add(
@@ -93,8 +103,9 @@ export class TasksComponent implements OnInit {
         .deleteTask(task)
         .subscribe(
           () =>
-            (this.filteredTasks=
-              this.filteredTasks.filter((t) => t.id !== task.id))
+            (this.filteredTasks = this.filteredTasks.filter(
+              (t) => t.id !== task.id
+            ))
         )
     );
     console.log(

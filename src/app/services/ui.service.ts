@@ -1,16 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { ShowUiElements } from '../interface/show-ui-elements';
 @Injectable({
   providedIn: 'root',
 })
 export class UiService {
-  private showAddtaskForm: boolean = false;
+    showSpecificUiElements: ShowUiElements = {
+    showAddtaskForm: false,
+    showButtonComponent: true,
+    showFilterComponent: true,
+  };
   private subject = new Subject<any>();
   constructor() {}
 
-  toggleAddtask(): void {
-    this.showAddtaskForm = !this.showAddtaskForm;
-    this.subject.next(this.showAddtaskForm);
+  toggleUiElements(): void {
+    this.showSpecificUiElements.showAddtaskForm =
+      !this.showSpecificUiElements.showAddtaskForm;
+
+    this.showSpecificUiElements.showButtonComponent =
+      !this.showSpecificUiElements.showButtonComponent;
+    
+    this.showSpecificUiElements.showFilterComponent =
+      !this.showSpecificUiElements.showFilterComponent;
+    
+    this.subject.next(this.showSpecificUiElements);
   }
 
   onToggle(): Observable<any> {

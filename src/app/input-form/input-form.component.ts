@@ -1,7 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { UiService } from '../services/ui.service';
 import { Subscription } from 'rxjs';
-import { Task } from '../task';
+import { Task } from '../interface/task';
+import { ShowUiElements } from '../interface/show-ui-elements';
 
 @Component({
   selector: 'app-input-form',
@@ -9,7 +16,9 @@ import { Task } from '../task';
   styleUrls: ['./input-form.component.css'],
 })
 export class InputFormComponent implements OnInit {
-  showAddtaskForm!: boolean;
+  showAddtaskForm!: Boolean;
+  showAddtaskForm1: Boolean = false;
+
   subscriptions!: Subscription;
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
 
@@ -19,14 +28,16 @@ export class InputFormComponent implements OnInit {
   dateAdded!: Date;
   buttonType: string = 'submit';
 
-  constructor(private uiService: UiService) {}
+  constructor(private uiService: UiService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.subscriptions = this.uiService
       .onToggle()
-      .subscribe((value) => this.showAddtaskForm=value);
-    
-    
+      .subscribe(
+        (value: ShowUiElements) => (
+          (this.showAddtaskForm = value.showAddtaskForm)
+        )
+      );
   }
 
   onSubmit() {
@@ -49,5 +60,13 @@ export class InputFormComponent implements OnInit {
     };
 
     this.onAddTask.emit(task);
+    setTimeout(() => {
+      this.onClickHideAddTaskForm();
+      this.cd.markForCheck();
+    }, 300);
+  }
+
+  onClickHideAddTaskForm() {
+    this.uiService.toggleUiElements();
   }
 }
