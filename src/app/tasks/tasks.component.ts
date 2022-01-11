@@ -1,10 +1,10 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task';
 import { TaskService } from '../services/task-service.service';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UiService } from '../services/ui.service';
-import { ShowUiElements } from '../interface/show-ui-elements';
+import { ShowUiElements } from '../interfaces/show-ui-elements';
 
 @Component({
   selector: 'app-tasks',

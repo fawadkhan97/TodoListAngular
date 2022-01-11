@@ -5,33 +5,9 @@
       "category": "office",
       "priority": "low",
       "dateAdded": "2022-01-0",
-      "isCompleted": false,
+      "isCompleted": true,
       "id": 3,
       "dateModified": "2022-01-07"
-    },
-    {
-      "text": "harry",
-      "category": "office",
-      "priority": "medium",
-      "dateAdded": "2022-01-05",
-      "isCompleted": false,
-      "id": 4
-    },
-    {
-      "text": "fawad",
-      "category": "personal",
-      "priority": "high",
-      "dateAdded": "2022-01-07",
-      "isCompleted": false,
-      "id": 5
-    },
-    {
-      "text": "po",
-      "category": "other",
-      "priority": "medium",
-      "dateAdded": "2022-01-31",
-      "isCompleted": false,
-      "id": 6
     }
   ]
 }

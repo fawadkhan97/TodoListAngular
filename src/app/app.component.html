@@ -1,6 +1,12 @@
 <div class="container-fluid center">
   <div class="app-container">
-    <app-header></app-header>
-    <app-tasks></app-tasks>
+    <nav>
+      <ul>
+        <li><a routerLink="/login" routerLinkActive="active">login</a> </li>
+        <li><a routerLink="/signUp" routerLinkActive="active"> signUp</a></li>
+      </ul>
+    </nav>
+   
   </div>
 </div>
+    <router-outlet></router-outlet>

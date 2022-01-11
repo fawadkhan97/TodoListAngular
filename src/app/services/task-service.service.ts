@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task';
 import { Observable } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
@@ -12,7 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:3000/tasks';
+  private apiUrl = 'http://localhost:8080/tasks';
   constructor(private http: HttpClient) {}
 
   getTask(): Observable<Task[]> {

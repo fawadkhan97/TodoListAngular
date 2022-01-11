@@ -15,6 +15,9 @@ import { ErrorHandlingInterceptor } from './interceptors/error-handling.intercep
 import { SelectOptionsComponent } from './select-options/select-options.component';
 import { FilterArrayPipe } from './pipes/filter-array.pipe';
 import { DatePipe } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { DatePipe } from '@angular/common';
     TasksComponent,
     SelectOptionsComponent,
     FilterArrayPipe,
+    LoginComponent,
+    SignUpComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

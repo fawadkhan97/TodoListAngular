@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task';
 
 @Component({
   selector: 'app-select-options',

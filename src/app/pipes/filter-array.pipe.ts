@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task';
 
 @Pipe({
   name: 'filterArray',

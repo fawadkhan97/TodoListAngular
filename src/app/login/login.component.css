@@ -1,0 +1,11 @@
+h1{
+    text-align: center;
+}
+
+.form-img{
+    width: 50%;
+}
+
+div.form-img >img{
+    width: 70%;
+}

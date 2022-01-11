@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task';
 import {
   faEdit,
   faTrashAlt,

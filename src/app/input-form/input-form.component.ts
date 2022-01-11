@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { UiService } from '../services/ui.service';
 import { Subscription } from 'rxjs';
-import { Task } from '../interface/task';
-import { ShowUiElements } from '../interface/show-ui-elements';
+import { Task } from '../interfaces/task';
+import { ShowUiElements } from '../interfaces/show-ui-elements';
 
 @Component({
   selector: 'app-input-form',
@@ -28,7 +28,7 @@ export class InputFormComponent implements OnInit {
   dateAdded!: Date;
   buttonType: string = 'submit';
 
-  constructor(private uiService: UiService, private cd: ChangeDetectorRef) {}
+  constructor(private uiService: UiService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.subscriptions = this.uiService
@@ -69,4 +69,5 @@ export class InputFormComponent implements OnInit {
   onClickHideAddTaskForm() {
     this.uiService.toggleUiElements();
   }
+
 }
