@@ -4,7 +4,7 @@ export interface Task {
   text: string;
   isCompleted: boolean;
   category: 'office' | 'personal' | 'other';
-  dateAdded?: Date;
+  dateAdded?: any;
   dateCompleted?: Date;
   dateModified?: String|null;
   priority: 'high' | 'medium' | 'low';

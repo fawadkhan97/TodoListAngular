@@ -13,15 +13,57 @@ import { ShowUiElements } from '../interfaces/show-ui-elements';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
-  filteredTasks: Task[] = [];
+  filteredTasks: Task[] =  [
+    {
+      "id": 1,
+      "text": "buy grocceries",
+      "isCompleted": false,
+      "category": "office",
+      "dateAdded": "2021-12-21",
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "text": "Pay bills",
+      "isCompleted": true,
+      "category": "office",
+      "dateAdded": "2021-12-21",
+      "priority": "medium"
+    },
+    {
+      "id": 3,
+      "text": "add new items",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-21",
+      "priority": "low"
+    },
+    {
+      "id": 4,
+      "text": "go to gym",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-21",
+      "priority": "low"
+    },
+    
+    {
+      "id": 9,
+      "text": "get new items",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-23T16:36:40.447Z",
+      "priority": "low"
+    }
+  ]
   errorMessage: String = '';
   buttonType: string = 'button';
   buttonPrimary: string = 'btn btn-primary';
   buttonSuccess: string = 'btn btn-success';
   buttonDanger: string = 'btn btn-danger';
   showAddtaskForm!: Boolean;
-  showButtonComponent: Boolean=true;
-  showFilterComponent: Boolean=true;
+  showButtonComponent: Boolean = true;
+  showFilterComponent: Boolean = true;
 
   private subscriptions = new Subscription();
 
@@ -76,6 +118,7 @@ export class TasksComponent implements OnInit {
 
   addTask(task: Task): void {
     console.log(task);
+    this.tasks.push(task);
     this.subscriptions.add(
       this.taskService.addTask(task).subscribe((task) => this.tasks.push(task))
     );
@@ -86,15 +129,10 @@ export class TasksComponent implements OnInit {
       task.category
     );
   }
-  editTask(task: Task): void {
-    console.log(this.tasks);
+  editTask(task: any): void {
+    console.log('edit is called ', this.tasks);
     this.subscriptions.add(this.taskService.editTask(task).subscribe());
-    console.log(
-      'requested to edit task of task with task id: ',
-      task.id,
-      'category: ',
-      task.category
-    );
+    console.log('edited', this.tasks);
   }
 
   deleteTask(task: Task): void {

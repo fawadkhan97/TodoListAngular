@@ -1,0 +1,17 @@
+nav {
+  height: 50px;
+  background-color: blueviolet;
+  color: white;
+      text-align: right;
+      width: 100%;
+}
+
+li{
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+}
+li a {
+    color: white;
+    
+}

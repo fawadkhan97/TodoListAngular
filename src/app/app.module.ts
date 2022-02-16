@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,50 @@
 {
   "tasks": [
     {
-      "text": "qwerty",
+      "id": 1,
+      "text": "buy grocceries",
+      "isCompleted": false,
       "category": "office",
-      "priority": "low",
-      "dateAdded": "2022-01-0",
+      "dateAdded": "2021-12-21",
+      "Priority": "high"
+    },
+    {
+      "id": 2,
+      "text": "Pay bills",
       "isCompleted": true,
+      "category": "office",
+      "dateAdded": "2021-12-21",
+      "Priority": "medium"
+    },
+    {
       "id": 3,
-      "dateModified": "2022-01-07"
+      "text": "add new items",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-21",
+      "Priority": "low"
+    },
+    {
+      "id": 4,
+      "text": "go to gym",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-21",
+      "Priority": "low"
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 9,
+      "text": "get new items",
+      "isCompleted": false,
+      "category": "other",
+      "dateAdded": "2021-12-23T16:36:40.447Z",
+      "Priority": "low"
     }
   ]
 }
